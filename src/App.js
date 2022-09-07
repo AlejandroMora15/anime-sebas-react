@@ -61,8 +61,9 @@ class App extends React.Component{
   editar=(dato)=>{
     var contador=0;
     var lista=this.state.data;
-    lista.map((registro)=>{
-      if(dato.id==registro.id){
+    // eslint-disable-next-line array-callback-return
+    lista.map((registro) => {
+      if(dato.id===registro.id){
         lista[contador].personaje=dato.personaje;
         lista[contador].anime=dato.anime;
       }
@@ -76,8 +77,9 @@ class App extends React.Component{
     if(opcion){
       var contador=0;
       var lista=this.state.data;
+      // eslint-disable-next-line array-callback-return
       lista.map((registro)=>{
-        if(registro.id==dato.id){
+        if(registro.id===dato.id){
           lista.splice(contador, 1);
         }
         contador++;
@@ -104,8 +106,8 @@ class App extends React.Component{
             </tr>
           </thead>
           <tbody>
-            {this.state.data.map((elemento)=>(
-              <tr>
+            {this.state.data.map((elemento, index)=>(
+              <tr key={index}>
                 <td>{elemento.id}</td>
                 <td>{elemento.personaje}</td>
                 <td>{elemento.anime}</td>
